@@ -39,7 +39,7 @@ gem "rack-cors"
 # Password hashing for has_secure_password
 gem "bcrypt", "~> 3.1"
 # JWT encoding/decoding
-gem "jwt", "~> 2.8"
+gem "jwt", "~> 3.1"
 # Serializer for clean JSON responses
 gem "active_model_serializers", "~> 0.10.14"
 
