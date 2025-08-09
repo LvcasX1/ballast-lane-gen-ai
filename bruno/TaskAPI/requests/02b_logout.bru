@@ -1,0 +1,15 @@
+REQUEST {
+  name: "Logout (clear token)"
+  method: "GET"
+  url: "{{base_url}}/up"
+  headers: {
+    "Authorization": "Bearer {{jwt}}"
+  }
+}
+
+SCRIPT postResponse {
+  // Clear JWT and related env vars after logout
+  env.set("jwt", "");
+  env.set("user_id", "");
+  env.set("task_id", "");
+}

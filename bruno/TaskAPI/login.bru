@@ -1,0 +1,20 @@
+meta {
+  name: "Login"
+  type: "http"
+}
+
+post {{base_url}}/login
+content-type: application/json
+
+{
+  "email": "{{email}}",
+  "password": "{{password}}"
+}
+
+> {%
+try {
+  const body = JSON.parse(response.body);
+  if (body.token) env.set("jwt", body.token);
+  if (body.user && body.user.id) env.set("user_id", String(body.user.id));
+} catch (e) {}
+%}

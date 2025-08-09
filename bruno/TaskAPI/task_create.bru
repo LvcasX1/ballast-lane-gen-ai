@@ -1,0 +1,29 @@
+meta {
+  name: "Create Task"
+  type: "http"
+}
+
+post {{base_url}}/users/{{user_id}}/tasks
+Authorization: Bearer {{jwt}}
+content-type: application/json
+
+{
+  "task": {
+    "title": "New Task",
+    "description": "Created via Bruno",
+    "status": "pending",
+    "due_date": "{{date}}"
+  }
+}
+
+< {%
+const d = new Date().toISOString().slice(0,10);
+env.set("date", d);
+%}
+
+> {%
+try {
+  const body = JSON.parse(response.body);
+  if (body.id) env.set("task_id", String(body.id));
+} catch (e) {}
+%}

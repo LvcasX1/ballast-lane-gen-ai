@@ -1,0 +1,8 @@
+REQUEST {
+  name: "Show Task"
+  method: "GET"
+  url: "{{base_url}}/users/{{user_id}}/tasks/{{task_id}}"
+  headers: {
+    "Authorization": "Bearer {{jwt}}"
+  }
+}

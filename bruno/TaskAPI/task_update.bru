@@ -1,0 +1,14 @@
+meta {
+  name: "Update Task"
+  type: "http"
+}
+
+patch {{base_url}}/users/{{user_id}}/tasks/{{task_id}}
+Authorization: Bearer {{jwt}}
+content-type: application/json
+
+{
+  "task": {
+    "status": "in_progress"
+  }
+}

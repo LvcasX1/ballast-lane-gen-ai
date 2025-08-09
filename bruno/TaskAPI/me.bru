@@ -1,0 +1,14 @@
+meta {
+  name: "Me"
+  type: "http"
+}
+
+get {{base_url}}/me
+Authorization: Bearer {{jwt}}
+
+> {%
+try {
+  const body = JSON.parse(response.body);
+  if (body.id) env.set("user_id", String(body.id));
+} catch (e) {}
+%}

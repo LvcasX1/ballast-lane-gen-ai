@@ -1,0 +1,24 @@
+REQUEST {
+  name: "Register"
+  method: "POST"
+  url: "{{base_url}}/register"
+  headers: {
+    "content-type": "application/json"
+  }
+  body: json({
+    "user": {
+      "name": "Demo User",
+      "email": "{{email}}",
+      "password": "{{password}}",
+      "password_confirmation": "{{password}}"
+    }
+  })
+}
+
+SCRIPT postResponse {
+  try {
+    const body = JSON.parse(response.body);
+    if (body.token) env.set("jwt", body.token);
+    if (body.user && body.user.id) env.set("user_id", String(body.user.id));
+  } catch (e) { /* ignore */ }
+}

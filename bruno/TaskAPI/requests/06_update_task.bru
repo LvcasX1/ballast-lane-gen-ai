@@ -1,0 +1,14 @@
+REQUEST {
+  name: "Update Task"
+  method: "PATCH"
+  url: "{{base_url}}/users/{{user_id}}/tasks/{{task_id}}"
+  headers: {
+    "Authorization": "Bearer {{jwt}}",
+    "content-type": "application/json"
+  }
+  body: json({
+    "task": {
+      "status": "in_progress"
+    }
+  })
+}

@@ -1,0 +1,29 @@
+REQUEST {
+  name: "Create Task"
+  method: "POST"
+  url: "{{base_url}}/users/{{user_id}}/tasks"
+  headers: {
+    "Authorization": "Bearer {{jwt}}",
+    "content-type": "application/json"
+  }
+  body: json({
+    "task": {
+      "title": "New Task",
+      "description": "Created via Bruno",
+      "status": "pending",
+      "due_date": "{{date}}"
+    }
+  })
+}
+
+SCRIPT preRequest {
+  const d = new Date().toISOString().slice(0,10);
+  env.set("date", d);
+}
+
+SCRIPT postResponse {
+  try {
+    const body = JSON.parse(response.body);
+    if (body.id) env.set("task_id", String(body.id));
+  } catch (e) { /* ignore */ }
+}

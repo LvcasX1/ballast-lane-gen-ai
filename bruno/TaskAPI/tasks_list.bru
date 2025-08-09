@@ -1,0 +1,7 @@
+meta {
+  name: "List Tasks"
+  type: "http"
+}
+
+get {{base_url}}/users/{{user_id}}/tasks
+Authorization: Bearer {{jwt}}

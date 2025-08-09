@@ -1,0 +1,23 @@
+groceries:
+  id: 1
+  user: demo
+  title: Buy groceries
+  description: Milk, eggs, bread
+  status: 0
+  due_date: <%= Date.today + 3 %>
+
+report:
+  id: 2
+  user: demo
+  title: Write report
+  description: Quarterly metrics
+  status: 1
+  due_date: <%= Date.today + 7 %>
+
+bills:
+  id: 3
+  user: demo
+  title: Pay bills
+  description: Utilities and rent
+  status: 2
+  due_date: <%= Date.today - 1 %>

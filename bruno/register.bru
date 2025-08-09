@@ -1,0 +1,24 @@
+meta {
+  name: "Register"
+  type: "http"
+}
+
+post {{base_url}}/register
+content-type: application/json
+
+{
+  "user": {
+    "name": "Demo User",
+    "email": "{{email}}",
+    "password": "{{password}}",
+    "password_confirmation": "{{password}}"
+  }
+}
+
+> {%
+try {
+  const body = JSON.parse(response.body);
+  if (body.token) env.set("jwt", body.token);
+  if (body.user && body.user.id) env.set("user_id", String(body.user.id));
+} catch (e) {}
+%}

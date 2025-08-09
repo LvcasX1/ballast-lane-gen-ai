@@ -1,0 +1,7 @@
+meta {
+  name: "Delete Task"
+  type: "http"
+}
+
+delete {{base_url}}/users/{{user_id}}/tasks/{{task_id}}
+Authorization: Bearer {{jwt}}
