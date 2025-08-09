@@ -9,7 +9,6 @@ Secure, JSON-only Rails 8 API with JWT auth and PostgreSQL.
 - 👤 Profile (with curl)
 - ✅ Tasks CRUD (with curl)
 - 🌱 Seeds & 📦 Fixtures
-- 🧰 Bruno collection
 - ⚙️ Configuration & Env
 - ❗️ Error responses
 
@@ -175,13 +174,6 @@ curl -X DELETE http://localhost:3000/users/<USER_ID>/tasks/<TASK_ID> \
 - 📦 Load fixtures into development for quick testing:
   - All: `bundle exec rails db:fixtures:load RAILS_ENV=development`
   - Specific: `bundle exec rails db:fixtures:load FIXTURES=users,tasks RAILS_ENV=development`
-
----
-
-## 🧰 Bruno collection
-- Import folder `bruno/TaskAPI` (or use root-level `bruno/*.bru`)
-- Run: Register/Login → Me → Tasks CRUD
-- JWT is captured automatically in the provided Bruno scripts; Logout script clears it
 
 ---
 
